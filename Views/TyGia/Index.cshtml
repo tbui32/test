@@ -1,0 +1,51 @@
+@model IEnumerable<DongABank.Models.Item>
+  @{ ViewData["Title"] = "Tỷ giá"; }
+
+  <h2>Tỷ giá</h2>
+
+  <p>
+    <a asp-action="Create">Create New</a>
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Mã ngoại tệ</th>
+        <th>Quốc gia</th>
+        <th>Mua tiền mặt</th>
+        <th>Mua chuyển khoản</th>
+        <th>Bán tiền mặt</th>
+        <th>Bán chuyển khoản</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var item in Model) {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+          <img src="@Url.Content(item.imageurl)" alt="Image">
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.muatienmat)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.muack)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.bantienmat)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.banck)
+        </td>
+        <td>
+          @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+          @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */
+          }) | @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey
+          */ })
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
